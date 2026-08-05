@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import {
   FiArrowUpRight,
@@ -6,6 +5,7 @@ import {
   FiAward,
   FiUsers,
 } from "react-icons/fi";
+import { Link } from "react-router-dom";
 
 const values = [
   {
@@ -40,10 +40,11 @@ function About() {
       </div>
 
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
-        {/* Main Story */}
+
+        {/* MAIN STORY */}
         <div className="grid gap-16 lg:grid-cols-[1fr_0.85fr] lg:items-center">
-          
-          {/* Image */}
+
+          {/* IMAGE */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -74,7 +75,7 @@ function About() {
             </div>
           </motion.div>
 
-          {/* Story */}
+          {/* STORY */}
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -97,8 +98,8 @@ function About() {
 
             <div className="mt-8 space-y-5 text-sm leading-7 text-[#0A0A0A]/55">
               <p>
-                INBLACK was created around one simple idea — beauty should feel
-                personal.
+                INBLACK was created around one simple idea — beauty should
+                feel personal.
               </p>
 
               <p>
@@ -107,13 +108,15 @@ function About() {
               </p>
 
               <p>
-                Hair, nails, makeup, therapy and style come together under one
-                roof to create an experience that goes beyond the appointment.
+                Hair, nails, makeup, therapy and style come together under
+                one roof to create an experience that goes beyond the
+                appointment.
               </p>
             </div>
 
-            <a
-              href="/about"
+            {/* ABOUT PAGE LINK */}
+            <Link
+              to="/about"
               className="group mt-9 inline-flex items-center gap-3 bg-[#0A0A0A] px-7 py-4 text-xs font-medium tracking-[0.18em] text-[#F5F2ED] transition-all duration-300 hover:bg-[#C9A45C] hover:text-[#0A0A0A]"
             >
               DISCOVER OUR STORY
@@ -122,12 +125,13 @@ function About() {
                 size={16}
                 className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
               />
-            </a>
+            </Link>
           </motion.div>
         </div>
 
-        {/* Values */}
+        {/* VALUES */}
         <div className="mt-28 border-t border-[#0A0A0A]/10 pt-10 lg:mt-36">
+
           <div className="mb-12 flex items-center justify-between">
             <span className="text-xs uppercase tracking-[0.3em] text-[#0A0A0A]/40">
               What we believe
@@ -139,6 +143,7 @@ function About() {
           </div>
 
           <div className="grid gap-px bg-[#0A0A0A]/10 md:grid-cols-3">
+
             {values.map((value, index) => {
               const Icon = value.icon;
 
@@ -168,12 +173,13 @@ function About() {
                 </motion.div>
               );
             })}
+
           </div>
         </div>
+
       </div>
     </section>
   );
 }
 
 export default About;
-

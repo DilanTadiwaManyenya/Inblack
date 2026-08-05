@@ -1,187 +1,247 @@
-
 import { motion } from "framer-motion";
 import { FiArrowUpRight } from "react-icons/fi";
+import { Link } from "react-router-dom";
 
 const galleryItems = [
   {
     title: "Hair",
-    category: "BEAUTY",
+    category: "Beauty",
     image:
-      "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1000&q=85",
-    size: "large",
+      "https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=1200&q=85",
   },
   {
     title: "Nails",
-    category: "BEAUTY",
+    category: "Beauty",
     image:
-      "https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=900&q=85",
-    size: "small",
+      "https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=1200&q=85",
   },
   {
     title: "Makeup",
-    category: "BEAUTY",
+    category: "Beauty",
     image:
-      "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=900&q=85",
-    size: "small",
+      "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1200&q=85",
   },
   {
-    title: "Therapy",
-    category: "WELLNESS",
+    title: "Wellness",
+    category: "Therapy",
     image:
-      "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1000&q=85",
-    size: "large",
+      "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=1200&q=85",
   },
   {
-    title: "The Boutique",
-    category: "STYLE",
+    title: "Beauty Rituals",
+    category: "Lifestyle",
     image:
-      "https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=900&q=85",
-    size: "small",
+      "https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&w=1200&q=85",
+  },
+  {
+    title: "The INBLACK Experience",
+    category: "Studio",
+    image:
+      "https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1200&q=85",
   },
 ];
 
 function Gallery() {
   return (
-    <section
-      id="gallery"
-      className="relative overflow-hidden bg-[#0A0A0A] py-28 text-[#F5F2ED] lg:py-40"
-    >
-      <div className="mx-auto max-w-7xl px-6 lg:px-10">
+    <main className="bg-[#0A0A0A] text-[#F5F2ED]">
 
-        {/* Header */}
-        <div className="mb-16 flex flex-col justify-between gap-8 lg:flex-row lg:items-end">
+      {/* =====================================================
+          HERO
+      ===================================================== */}
+      <section className="relative min-h-[75vh] overflow-hidden px-6 pb-20 pt-40 lg:px-10 lg:pb-28">
+
+        <div className="pointer-events-none absolute inset-0">
+          <div className="absolute left-1/4 top-1/4 h-96 w-96 rounded-full bg-[#C9A45C]/10 blur-[140px]" />
+
+          <div className="absolute bottom-0 right-0 h-80 w-80 rounded-full bg-white/[0.03] blur-[120px]" />
+        </div>
+
+        <div className="relative z-10 mx-auto flex min-h-[55vh] max-w-7xl items-end">
+
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
           >
             <div className="mb-7 flex items-center gap-3">
               <span className="h-px w-10 bg-[#C9A45C]" />
 
-              <span className="text-xs uppercase tracking-[0.3em] text-[#C9A45C]">
-                The INBLACK World
+              <span className="text-xs uppercase tracking-[0.35em] text-[#C9A45C]">
+                The INBLACK Gallery
               </span>
             </div>
 
-            <h2 className="text-5xl font-light leading-[0.95] tracking-[-0.05em] sm:text-6xl lg:text-8xl">
+            <h1 className="text-6xl font-light leading-[0.9] tracking-[-0.06em] sm:text-7xl md:text-8xl lg:text-[9rem]">
               BEAUTY
               <br />
-              <span className="italic text-[#C9A45C]">IN EVERY</span>
-              <br />
-              DETAIL.
-            </h2>
+              <span className="italic text-[#C9A45C]">
+                IN FRAME.
+              </span>
+            </h1>
+
+            <p className="mt-10 max-w-xl text-sm leading-7 text-white/50 md:text-base">
+              A glimpse into the world of INBLACK — beauty, wellness,
+              creativity and moments designed to make you feel your best.
+            </p>
           </motion.div>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.15 }}
-            className="max-w-sm text-sm leading-6 text-[#F5F2ED]/45 lg:pb-2"
-          >
-            A glimpse into the INBLACK experience — where beauty, wellness and
-            personal style meet.
-          </motion.p>
         </div>
+      </section>
 
-        {/* Gallery */}
-        <div className="grid gap-4 md:grid-cols-2">
-          
-          {/* Left Column */}
-          <div className="space-y-4">
-            {galleryItems.slice(0, 3).map((item, index) => (
-              <GalleryCard
-                key={item.title}
-                item={item}
-                index={index}
-                tall={item.size === "large"}
-              />
-            ))}
+      {/* =====================================================
+          GALLERY GRID
+      ===================================================== */}
+      <section className="px-6 pb-32 lg:px-10 lg:pb-40">
+
+        <div className="mx-auto max-w-7xl">
+
+          <div className="mb-14 flex items-end justify-between border-b border-white/10 pb-6">
+            <div>
+              <p className="text-xs uppercase tracking-[0.3em] text-[#C9A45C]">
+                Selected Moments
+              </p>
+
+              <h2 className="mt-3 text-3xl font-light sm:text-4xl">
+                INSIDE INBLACK
+              </h2>
+            </div>
+
+            <span className="hidden text-xs tracking-[0.2em] text-white/25 sm:block">
+              01 — 06
+            </span>
           </div>
 
-          {/* Right Column */}
-          <div className="space-y-4 md:pt-24">
-            {galleryItems.slice(3).map((item, index) => (
-              <GalleryCard
+          <div className="grid gap-5 md:grid-cols-2">
+
+            {galleryItems.map((item, index) => (
+              <motion.article
                 key={item.title}
-                item={item}
-                index={index + 3}
-                tall={item.size === "large"}
-              />
+                initial={{
+                  opacity: 0,
+                  y: 40,
+                }}
+                whileInView={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                viewport={{
+                  once: true,
+                  amount: 0.15,
+                }}
+                transition={{
+                  duration: 0.7,
+                  delay: index * 0.08,
+                }}
+                className={`group relative overflow-hidden ${
+                  index === 0 || index === 5
+                    ? "md:row-span-2"
+                    : ""
+                }`}
+              >
+
+                <div
+                  className={`relative overflow-hidden ${
+                    index === 0 || index === 5
+                      ? "h-[650px]"
+                      : "h-[450px]"
+                  }`}
+                >
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                  />
+
+                  {/* Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent opacity-70 transition-opacity duration-500 group-hover:opacity-90" />
+
+                  {/* Content */}
+                  <div className="absolute inset-x-0 bottom-0 p-7 lg:p-9">
+
+                    <p className="text-[10px] uppercase tracking-[0.3em] text-[#C9A45C]">
+                      {item.category}
+                    </p>
+
+                    <div className="mt-3 flex items-end justify-between gap-5">
+
+                      <h3 className="text-3xl font-light sm:text-4xl">
+                        {item.title}
+                      </h3>
+
+                      <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/30 transition-all duration-300 group-hover:border-[#C9A45C] group-hover:bg-[#C9A45C] group-hover:text-[#0A0A0A]">
+                        <FiArrowUpRight size={18} />
+                      </div>
+
+                    </div>
+
+                  </div>
+                </div>
+
+              </motion.article>
             ))}
+
           </div>
+
         </div>
+      </section>
 
-        {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="mt-16 flex justify-center"
-        >
-          <a
-            href="/gallery"
-            className="group flex items-center gap-3 border border-[#F5F2ED]/20 px-7 py-4 text-xs font-medium tracking-[0.18em] transition-all duration-300 hover:border-[#C9A45C] hover:bg-[#C9A45C] hover:text-[#0A0A0A]"
-          >
-            VIEW FULL GALLERY
+      {/* =====================================================
+          STATEMENT
+      ===================================================== */}
+      <section className="border-t border-white/10 px-6 py-28 text-center lg:px-10 lg:py-36">
 
-            <FiArrowUpRight
-              size={16}
-              className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
-            />
-          </a>
-        </motion.div>
-      </div>
-    </section>
-  );
-}
+        <div className="mx-auto max-w-4xl">
 
-function GalleryCard({ item, index, tall }) {
-  return (
-    <motion.a
-      href="/gallery"
-      initial={{ opacity: 0, y: 35 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{
-        duration: 0.7,
-        delay: index * 0.08,
-      }}
-      className={`group relative block overflow-hidden ${
-        tall ? "aspect-[4/5]" : "aspect-[4/3]"
-      }`}
-    >
-      {/* Image */}
-      <img
-        src={item.image}
-        alt={item.title}
-        className="h-full w-full object-cover grayscale transition-all duration-700 group-hover:scale-105 group-hover:grayscale-0"
-      />
-
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A]/80 via-transparent to-transparent opacity-80 transition-opacity duration-500 group-hover:opacity-100" />
-
-      {/* Content */}
-      <div className="absolute bottom-0 left-0 right-0 flex items-end justify-between p-6 lg:p-8">
-        <div>
-          <p className="mb-2 text-[9px] tracking-[0.25em] text-[#C9A45C]">
-            {item.category}
+          <p className="text-xs uppercase tracking-[0.35em] text-[#C9A45C]">
+            More than a picture
           </p>
 
-          <h3 className="text-3xl font-light tracking-[-0.03em] text-white lg:text-4xl">
-            {item.title}
-          </h3>
-        </div>
+          <motion.h2
+            initial={{
+              opacity: 0,
+              y: 25,
+            }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+            }}
+            viewport={{
+              once: true,
+            }}
+            transition={{
+              duration: 0.7,
+            }}
+            className="mt-7 text-5xl font-light leading-[0.95] tracking-[-0.05em] sm:text-6xl md:text-7xl"
+          >
+            YOUR BEAUTY.
+            <br />
+            <span className="italic text-[#C9A45C]">
+              YOUR STORY.
+            </span>
+          </motion.h2>
 
-        <div className="flex h-11 w-11 items-center justify-center rounded-full border border-white/30 text-white transition-all duration-300 group-hover:border-[#C9A45C] group-hover:bg-[#C9A45C] group-hover:text-[#0A0A0A]">
-          <FiArrowUpRight size={17} />
+          <p className="mx-auto mt-8 max-w-xl text-sm leading-7 text-white/40">
+            Every appointment creates a moment worth remembering.
+            Come experience INBLACK for yourself.
+          </p>
+
+          <Link
+            to="/booking"
+            className="group mt-10 inline-flex items-center gap-3 bg-[#F5F2ED] px-8 py-5 text-xs font-medium tracking-[0.2em] text-[#0A0A0A] transition-all duration-300 hover:bg-[#C9A45C]"
+          >
+            BOOK YOUR EXPERIENCE
+
+            <FiArrowUpRight
+              size={17}
+              className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
+            />
+          </Link>
+
         </div>
-      </div>
-    </motion.a>
+      </section>
+
+    </main>
   );
 }
 
 export default Gallery;
-

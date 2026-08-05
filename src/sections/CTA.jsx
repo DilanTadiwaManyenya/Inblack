@@ -1,47 +1,49 @@
-
 import { motion } from "framer-motion";
-import { FiArrowUpRight, FiCalendar } from "react-icons/fi";
+import Button from "../components/Button";
 
 function CTA() {
   return (
     <section
       id="booking"
-      className="relative overflow-hidden bg-[#C9A45C] py-28 text-[#0A0A0A] lg:py-40"
+      className="relative overflow-hidden bg-[#0A0A0A] px-6 py-28 text-[#F5F2ED] lg:px-10 lg:py-40"
     >
       {/* Decorative background */}
-      <div className="pointer-events-none absolute -right-20 -top-20 h-96 w-96 rounded-full border border-[#0A0A0A]/10" />
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute left-1/2 top-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#C9A45C]/10 blur-[140px]" />
+      </div>
 
-      <div className="pointer-events-none absolute -bottom-40 -left-20 h-[500px] w-[500px] rounded-full border border-[#0A0A0A]/10" />
+      <div className="relative z-10 mx-auto max-w-5xl text-center">
 
-      <div className="mx-auto max-w-6xl px-6 text-center lg:px-10">
         {/* Label */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="flex items-center justify-center gap-3"
+          className="mb-7 flex items-center justify-center gap-3"
         >
-          <FiCalendar size={15} />
+          <span className="h-px w-10 bg-[#C9A45C]" />
 
-          <span className="text-xs font-medium uppercase tracking-[0.3em]">
+          <span className="text-xs uppercase tracking-[0.35em] text-[#C9A45C]">
             Your moment starts here
           </span>
+
+          <span className="h-px w-10 bg-[#C9A45C]" />
         </motion.div>
 
         {/* Heading */}
         <motion.h2
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.1 }}
-          className="mx-auto mt-8 max-w-5xl text-6xl font-light leading-[0.88] tracking-[-0.06em] sm:text-7xl lg:text-[9rem]"
+          transition={{ duration: 0.8 }}
+          className="text-5xl font-light leading-[0.95] tracking-[-0.05em] sm:text-6xl md:text-7xl lg:text-8xl"
         >
-          YOUR NEXT
+          READY TO FEEL
           <br />
-          <span className="italic">LOOK</span>
-          <br />
-          STARTS HERE.
+          <span className="italic text-[#C9A45C]">
+            BEAUTIFUL?
+          </span>
         </motion.h2>
 
         {/* Description */}
@@ -49,45 +51,42 @@ function CTA() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.7, delay: 0.25 }}
-          className="mx-auto mt-8 max-w-xl text-sm leading-7 text-[#0A0A0A]/60"
+          transition={{ duration: 0.7, delay: 0.15 }}
+          className="mx-auto mt-8 max-w-xl text-sm leading-7 text-white/50 md:text-base"
         >
-          Whether you're ready for a fresh look, a moment of relaxation or
-          something special from our boutique, we're ready when you are.
+          Your next beauty and wellness experience is waiting.
+          Take some time for yourself and let INBLACK take care of the rest.
         </motion.p>
 
         {/* CTA */}
-        <motion.a
-          href="/booking"
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.7, delay: 0.35 }}
-          className="group mx-auto mt-10 flex w-fit items-center gap-4 bg-[#0A0A0A] px-8 py-5 text-xs font-medium tracking-[0.2em] text-[#F5F2ED] transition-all duration-300 hover:bg-[#F5F2ED] hover:text-[#0A0A0A]"
+          transition={{ duration: 0.7, delay: 0.3 }}
+          className="mt-10"
         >
-          BOOK AN APPOINTMENT
+          <Button to="/booking" variant="secondary" size="lg">
+            BOOK YOUR EXPERIENCE
+          </Button>
+        </motion.div>
 
-          <FiArrowUpRight
-            size={18}
-            className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
-          />
-        </motion.a>
-
-        {/* Bottom details */}
+        {/* Bottom statement */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.7, delay: 0.5 }}
-          className="mx-auto mt-16 flex max-w-2xl flex-col justify-between gap-5 border-t border-[#0A0A0A]/15 pt-6 text-[10px] uppercase tracking-[0.2em] text-[#0A0A0A]/45 sm:flex-row"
+          transition={{ duration: 0.8, delay: 0.5 }}
+          className="mt-20 border-t border-white/10 pt-8"
         >
-          <span>Hair • Nails • Makeup</span>
-          <span>Therapy • Boutique • Style</span>
+          <p className="text-[10px] uppercase tracking-[0.35em] text-white/25">
+            Beauty • Wellness • Style • INBLACK
+          </p>
         </motion.div>
+
       </div>
     </section>
   );
 }
 
 export default CTA;
-

@@ -1,25 +1,25 @@
-
 import { motion } from "framer-motion";
-import { FiArrowLeft, FiArrowRight, FiStar } from "react-icons/fi";
+import { FiArrowUpRight, FiStar } from "react-icons/fi";
+import { Link } from "react-router-dom";
 
 const testimonials = [
   {
     quote:
-      "The whole experience was incredible. I walked in for my hair and left feeling like a completely different person.",
-    name: "AMARA M.",
-    service: "HAIR EXPERIENCE",
+      "INBLACK is honestly such a beautiful experience. I walked in feeling tired and left feeling like a completely different person.",
+    name: "AMARA",
+    service: "Hair & Beauty",
   },
   {
     quote:
-      "The attention to detail is unmatched. From the atmosphere to the service, everything feels intentional.",
-    name: "TAPIWA R.",
-    service: "NAIL EXPERIENCE",
+      "The attention to detail is incredible. Everything feels intentional, from the atmosphere to the service itself.",
+    name: "TAPIWA",
+    service: "Nails & Wellness",
   },
   {
     quote:
-      "INBLACK is exactly what I needed. The massage was amazing and the entire space made me feel completely relaxed.",
-    name: "NYASHA T.",
-    service: "THERAPY EXPERIENCE",
+      "I love that INBLACK feels like more than just a salon. You can actually slow down and enjoy the experience.",
+    name: "NYASHA",
+    service: "Makeup & Therapy",
   },
 ];
 
@@ -27,132 +27,146 @@ function Testimonials() {
   return (
     <section
       id="testimonials"
-      className="relative overflow-hidden bg-[#0A0A0A] py-28 text-[#F5F2ED] lg:py-40"
+      className="bg-[#F5F2ED] px-6 py-28 text-[#0A0A0A] lg:px-10 lg:py-36"
     >
-      {/* Background glow */}
-      <div className="pointer-events-none absolute right-[-150px] top-1/2 h-[500px] w-[500px] -translate-y-1/2 rounded-full bg-[#C9A45C]/[0.05] blur-[150px]" />
+      <div className="mx-auto max-w-7xl">
 
-      <div className="mx-auto max-w-7xl px-6 lg:px-10">
-        {/* Header */}
-        <div className="flex flex-col justify-between gap-8 border-b border-[#F5F2ED]/10 pb-10 md:flex-row md:items-end">
+        {/* HEADER */}
+        <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
+
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
           >
-            <div className="mb-7 flex items-center gap-3">
+            <div className="mb-6 flex items-center gap-3">
               <span className="h-px w-10 bg-[#C9A45C]" />
 
-              <span className="text-xs uppercase tracking-[0.3em] text-[#C9A45C]">
-                Client Love
+              <span className="text-xs uppercase tracking-[0.3em] text-[#8C6D32]">
+                Client Experiences
               </span>
             </div>
 
             <h2 className="text-5xl font-light leading-[0.95] tracking-[-0.05em] sm:text-6xl lg:text-7xl">
-              WORDS FROM
+              WORDS
               <br />
-              <span className="italic text-[#C9A45C]">OUR CLIENTS.</span>
+              <span className="italic">FROM YOU.</span>
             </h2>
           </motion.div>
 
-          {/* Rating */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
+          <motion.p
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="flex items-center gap-4"
+            transition={{ duration: 0.7, delay: 0.1 }}
+            className="max-w-md text-sm leading-7 text-[#0A0A0A]/50"
           >
-            <div className="flex gap-1 text-[#C9A45C]">
-              {[1, 2, 3, 4, 5].map((star) => (
-                <FiStar key={star} size={15} fill="currentColor" />
-              ))}
-            </div>
+            Every INBLACK experience is personal. Here's what some of our
+            clients have to say.
+          </motion.p>
 
-            <span className="text-xs tracking-[0.15em] text-[#F5F2ED]/40">
-              5.0 CLIENT RATING
-            </span>
-          </motion.div>
         </div>
 
-        {/* Testimonials */}
-        <div className="grid gap-px bg-[#F5F2ED]/10 md:grid-cols-3">
+        {/* TESTIMONIAL GRID */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+          variants={{
+            hidden: {},
+            visible: {
+              transition: {
+                staggerChildren: 0.12,
+              },
+            },
+          }}
+          className="mt-16 grid gap-px bg-[#0A0A0A]/10 md:grid-cols-3"
+        >
           {testimonials.map((testimonial, index) => (
             <motion.article
               key={testimonial.name}
-              initial={{ opacity: 0, y: 35 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{
-                duration: 0.7,
-                delay: index * 0.1,
+              variants={{
+                hidden: {
+                  opacity: 0,
+                  y: 30,
+                },
+                visible: {
+                  opacity: 1,
+                  y: 0,
+                  transition: {
+                    duration: 0.6,
+                    ease: "easeOut",
+                  },
+                },
               }}
-              className="bg-[#0A0A0A] p-8 lg:p-10"
+              className="relative bg-[#F5F2ED] p-8 lg:p-10"
             >
-              {/* Quote mark */}
-              <div className="text-5xl font-serif leading-none text-[#C9A45C]/40">
-                “
-              </div>
 
-              {/* Stars */}
-              <div className="mt-5 flex gap-1 text-[#C9A45C]">
+              {/* NUMBER */}
+              <span className="absolute right-8 top-8 text-xs tracking-[0.2em] text-[#0A0A0A]/20">
+                0{index + 1}
+              </span>
+
+              {/* STARS */}
+              <div className="flex gap-1 text-[#C9A45C]">
                 {[1, 2, 3, 4, 5].map((star) => (
                   <FiStar
                     key={star}
-                    size={12}
+                    size={14}
                     fill="currentColor"
                   />
                 ))}
               </div>
 
-              {/* Quote */}
-              <p className="mt-7 min-h-[150px] text-base leading-7 text-[#F5F2ED]/65">
-                {testimonial.quote}
-              </p>
+              {/* QUOTE */}
+              <blockquote className="mt-10 text-xl font-light leading-8 tracking-[-0.02em]">
+                "{testimonial.quote}"
+              </blockquote>
 
-              {/* Client */}
-              <div className="mt-8 border-t border-[#F5F2ED]/10 pt-6">
+              {/* CLIENT */}
+              <div className="mt-10 border-t border-[#0A0A0A]/10 pt-6">
                 <p className="text-xs font-medium tracking-[0.2em]">
                   {testimonial.name}
                 </p>
 
-                <p className="mt-2 text-[10px] tracking-[0.18em] text-[#C9A45C]">
+                <p className="mt-2 text-xs uppercase tracking-[0.2em] text-[#8C6D32]">
                   {testimonial.service}
                 </p>
               </div>
+
             </motion.article>
           ))}
-        </div>
+        </motion.div>
 
-        {/* Navigation */}
-        <div className="mt-8 flex items-center justify-between">
-          <span className="text-[10px] tracking-[0.2em] text-[#F5F2ED]/30">
-            01 — 03
-          </span>
+        {/* BOTTOM */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mt-14 flex flex-col justify-between gap-6 border-t border-[#0A0A0A]/10 pt-8 sm:flex-row sm:items-center"
+        >
+          <p className="max-w-md text-sm leading-6 text-[#0A0A0A]/40">
+            Your experience should leave you feeling confident, cared for
+            and completely yourself.
+          </p>
 
-          <div className="flex gap-2">
-            <button
-              type="button"
-              aria-label="Previous testimonial"
-              className="flex h-11 w-11 items-center justify-center border border-[#F5F2ED]/15 text-[#F5F2ED]/60 transition-all hover:border-[#C9A45C] hover:text-[#C9A45C]"
-            >
-              <FiArrowLeft size={16} />
-            </button>
+          <Link
+            to="/booking"
+            className="group inline-flex w-fit items-center gap-3 bg-[#0A0A0A] px-7 py-4 text-xs font-medium tracking-[0.18em] text-[#F5F2ED] transition-all duration-300 hover:bg-[#C9A45C] hover:text-[#0A0A0A]"
+          >
+            START YOUR EXPERIENCE
 
-            <button
-              type="button"
-              aria-label="Next testimonial"
-              className="flex h-11 w-11 items-center justify-center border border-[#F5F2ED]/15 text-[#F5F2ED]/60 transition-all hover:border-[#C9A45C] hover:text-[#C9A45C]"
-            >
-              <FiArrowRight size={16} />
-            </button>
-          </div>
-        </div>
+            <FiArrowUpRight
+              size={16}
+              className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
+            />
+          </Link>
+        </motion.div>
+
       </div>
     </section>
   );
 }
 
 export default Testimonials;
-

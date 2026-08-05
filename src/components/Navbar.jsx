@@ -1,72 +1,102 @@
-
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FiMenu, FiX, FiArrowUpRight } from "react-icons/fi";
+import {
+  FiMenu,
+  FiX,
+  FiArrowUpRight,
+} from "react-icons/fi";
+import {
+  Link,
+  NavLink,
+} from "react-router-dom";
 
 const navLinks = [
   { name: "Home", href: "/" },
-  { name: "Services", href: "#services" },
-  { name: "Boutique", href: "#boutique" },
-  { name: "Gallery", href: "#gallery" },
-  { name: "About", href: "#about" },
+  { name: "Services", href: "/services" },
+  { name: "Boutique", href: "/boutique" },
+  { name: "Gallery", href: "/gallery" },
+  { name: "About", href: "/about" },
+  { name: "Contact", href: "/contact" },
 ];
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
-  const closeMenu = () => setMenuOpen(false);
+  const closeMenu = () => {
+    setMenuOpen(false);
+  };
 
   return (
-    <header className="fixed top-0 left-0 z-50 w-full">
+    <header className="fixed left-0 top-0 z-50 w-full">
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-10">
-        
-        {/* Logo */}
-        <a
-          href="/"
-          className="group relative z-50 flex items-center gap-2"
+
+        {/* LOGO */}
+        <Link
+          to="/"
           onClick={closeMenu}
+          className="group relative z-50 flex items-center gap-2"
         >
           <span className="text-2xl font-semibold tracking-[0.35em] text-[#F5F2ED]">
             INBLACK
           </span>
 
           <span className="h-1.5 w-1.5 rounded-full bg-[#C9A45C]" />
-        </a>
+        </Link>
 
-        {/* Desktop Navigation */}
+        {/* DESKTOP NAVIGATION */}
         <div className="hidden items-center gap-8 md:flex">
           {navLinks.map((link) => (
-            <a
+            <NavLink
               key={link.name}
-              href={link.href}
-              className="relative text-sm tracking-wide text-[#F5F2ED]/70 transition-colors duration-300 hover:text-[#C9A45C]"
+              to={link.href}
+              className={({ isActive }) =>
+                `relative text-sm tracking-wide transition-colors duration-300 ${
+                  isActive
+                    ? "text-[#C9A45C]"
+                    : "text-[#F5F2ED]/70 hover:text-[#C9A45C]"
+                }`
+              }
             >
-              {link.name}
-            </a>
+              {({ isActive }) => (
+                <>
+                  {link.name}
+
+                  <span
+                    className={`absolute -bottom-2 left-0 h-px bg-[#C9A45C] transition-all duration-300 ${
+                      isActive ? "w-full" : "w-0"
+                    }`}
+                  />
+                </>
+              )}
+            </NavLink>
           ))}
         </div>
 
-        {/* Desktop CTA */}
-        <a
-          href="#booking"
+        {/* BOOK NOW */}
+        <Link
+          to="/booking"
           className="hidden items-center gap-2 border border-[#C9A45C]/60 px-5 py-3 text-xs font-medium tracking-[0.15em] text-[#F5F2ED] transition-all duration-300 hover:bg-[#C9A45C] hover:text-[#0A0A0A] md:flex"
         >
           BOOK NOW
           <FiArrowUpRight size={15} />
-        </a>
+        </Link>
 
-        {/* Mobile Menu Button */}
+        {/* MOBILE MENU BUTTON */}
         <button
           type="button"
           onClick={() => setMenuOpen(!menuOpen)}
           className="relative z-50 text-[#F5F2ED] md:hidden"
           aria-label={menuOpen ? "Close menu" : "Open menu"}
         >
-          {menuOpen ? <FiX size={28} /> : <FiMenu size={28} />}
+          {menuOpen ? (
+            <FiX size={28} />
+          ) : (
+            <FiMenu size={28} />
+          )}
         </button>
       </nav>
 
-      {/* Mobile Menu */}
+      {/* MOBILE MENU */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
@@ -77,28 +107,39 @@ function Navbar() {
             className="absolute left-0 top-0 flex min-h-screen w-full flex-col justify-center bg-[#0A0A0A] px-8 md:hidden"
           >
             <div className="flex flex-col gap-7">
+
               {navLinks.map((link, index) => (
-                <motion.a
+                <motion.div
                   key={link.name}
-                  href={link.href}
-                  onClick={closeMenu}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.08 }}
-                  className="text-4xl font-light tracking-tight text-[#F5F2ED] transition-colors hover:text-[#C9A45C]"
                 >
-                  {link.name}
-                </motion.a>
+                  <NavLink
+                    to={link.href}
+                    onClick={closeMenu}
+                    className={({ isActive }) =>
+                      `text-4xl font-light tracking-tight transition-colors ${
+                        isActive
+                          ? "text-[#C9A45C]"
+                          : "text-[#F5F2ED] hover:text-[#C9A45C]"
+                      }`
+                    }
+                  >
+                    {link.name}
+                  </NavLink>
+                </motion.div>
               ))}
 
-              <a
-                href="#booking"
+              <Link
+                to="/booking"
                 onClick={closeMenu}
-                className="mt-4 flex w-fit items-center gap-2 border border-[#C9A45C] px-6 py-4 text-sm tracking-[0.15em] text-[#C9A45C]"
+                className="mt-4 flex w-fit items-center gap-2 border border-[#C9A45C] px-6 py-4 text-sm tracking-[0.15em] text-[#C9A45C] transition-all hover:bg-[#C9A45C] hover:text-[#0A0A0A]"
               >
                 BOOK AN APPOINTMENT
                 <FiArrowUpRight size={17} />
-              </a>
+              </Link>
+
             </div>
           </motion.div>
         )}
@@ -108,4 +149,3 @@ function Navbar() {
 }
 
 export default Navbar;
-

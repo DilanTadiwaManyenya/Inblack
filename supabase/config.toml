@@ -1,0 +1,4 @@
+project_id = "inblack"
+
+[functions.create-booking]
+verify_jwt = false

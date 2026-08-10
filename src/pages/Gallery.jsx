@@ -2,42 +2,41 @@ import { motion } from "framer-motion";
 import { FiArrowUpRight } from "react-icons/fi";
 import { Link } from "react-router-dom";
 
+import hairImage from "../assets/hair.jpg";
+import nailsImage from "../assets/nails.jpg";
+import makeupImage from "../assets/makeup.jpg";
+import therapyImage from "../assets/therapy.jpg";
+
 const galleryItems = [
   {
     title: "Hair",
     category: "Beauty",
-    image:
-      "https://images.unsplash.com/photo-1562322140-8baeececf3df?auto=format&fit=crop&w=1200&q=85",
+    image: hairImage,
   },
   {
     title: "Nails",
     category: "Beauty",
-    image:
-      "https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=1200&q=85",
+    image: nailsImage,
   },
   {
     title: "Makeup",
     category: "Beauty",
-    image:
-      "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1200&q=85",
+    image: makeupImage,
   },
   {
     title: "Wellness",
     category: "Therapy",
-    image:
-      "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=1200&q=85",
+    image: therapyImage,
   },
   {
     title: "Beauty Rituals",
     category: "Lifestyle",
-    image:
-      "https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&w=1200&q=85",
+    image: makeupImage,
   },
   {
     title: "The INBLACK Experience",
     category: "Studio",
-    image:
-      "https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1200&q=85",
+    image: hairImage,
   },
 ];
 
@@ -50,6 +49,7 @@ function Gallery() {
       ===================================================== */}
       <section className="relative min-h-[75vh] overflow-hidden px-6 pb-20 pt-40 lg:px-10 lg:pb-28">
 
+        {/* Background atmosphere */}
         <div className="pointer-events-none absolute inset-0">
           <div className="absolute left-1/4 top-1/4 h-96 w-96 rounded-full bg-[#C9A45C]/10 blur-[140px]" />
 
@@ -74,7 +74,8 @@ function Gallery() {
             <h1 className="text-6xl font-light leading-[0.9] tracking-[-0.06em] sm:text-7xl md:text-8xl lg:text-[9rem]">
               BEAUTY
               <br />
-              <span className="italic text-[#C9A45C]">
+
+              <span className="font-serif italic text-[#C9A45C]">
                 IN FRAME.
               </span>
             </h1>
@@ -95,7 +96,9 @@ function Gallery() {
 
         <div className="mx-auto max-w-7xl">
 
+          {/* Section heading */}
           <div className="mb-14 flex items-end justify-between border-b border-white/10 pb-6">
+
             <div>
               <p className="text-xs uppercase tracking-[0.3em] text-[#C9A45C]">
                 Selected Moments
@@ -109,13 +112,15 @@ function Gallery() {
             <span className="hidden text-xs tracking-[0.2em] text-white/25 sm:block">
               01 — 06
             </span>
+
           </div>
 
+          {/* Images */}
           <div className="grid gap-5 md:grid-cols-2">
 
             {galleryItems.map((item, index) => (
               <motion.article
-                key={item.title}
+                key={`${item.title}-${index}`}
                 initial={{
                   opacity: 0,
                   y: 40,
@@ -146,14 +151,21 @@ function Gallery() {
                       : "h-[450px]"
                   }`}
                 >
+
+                  {/* IMAGE */}
                   <img
                     src={item.image}
-                    alt={item.title}
-                    className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                    alt={`INBLACK ${item.title}`}
+                    loading={index < 2 ? "eager" : "lazy"}
+                    decoding="async"
+                    className="h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-105"
                   />
 
                   {/* Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent opacity-70 transition-opacity duration-500 group-hover:opacity-90" />
+
+                  {/* Gold hover atmosphere */}
+                  <div className="absolute inset-0 bg-[#C9A45C]/0 transition-colors duration-700 group-hover:bg-[#C9A45C]/10" />
 
                   {/* Content */}
                   <div className="absolute inset-x-0 bottom-0 p-7 lg:p-9">
@@ -175,6 +187,7 @@ function Gallery() {
                     </div>
 
                   </div>
+
                 </div>
 
               </motion.article>
@@ -215,7 +228,8 @@ function Gallery() {
           >
             YOUR BEAUTY.
             <br />
-            <span className="italic text-[#C9A45C]">
+
+            <span className="font-serif italic text-[#C9A45C]">
               YOUR STORY.
             </span>
           </motion.h2>

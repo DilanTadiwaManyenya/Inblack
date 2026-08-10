@@ -8,6 +8,8 @@ import {
 } from "react-icons/fi";
 import { Link } from "react-router-dom";
 
+import aboutImage from "../assets/about.jpg";
+
 const values = [
   {
     icon: FiHeart,
@@ -42,12 +44,10 @@ const values = [
 function AboutPage() {
   return (
     <main className="bg-[#F5F2ED] text-[#0A0A0A]">
-
       {/* =====================================================
           HERO
       ===================================================== */}
       <section className="relative flex min-h-[75vh] items-end overflow-hidden bg-[#0A0A0A] px-6 pb-20 pt-40 text-[#F5F2ED] lg:px-10 lg:pb-28">
-
         {/* Background glow */}
         <div className="pointer-events-none absolute inset-0">
           <div className="absolute left-1/3 top-1/4 h-80 w-80 rounded-full bg-[#C9A45C]/10 blur-[120px]" />
@@ -56,7 +56,6 @@ function AboutPage() {
         </div>
 
         <div className="relative z-10 mx-auto w-full max-w-7xl">
-
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -73,7 +72,7 @@ function AboutPage() {
             <h1 className="max-w-5xl text-6xl font-light leading-[0.9] tracking-[-0.06em] sm:text-7xl md:text-8xl lg:text-[9rem]">
               MORE THAN
               <br />
-              <span className="italic text-[#C9A45C]">
+              <span className="font-serif italic text-[#C9A45C]">
                 A SALON.
               </span>
             </h1>
@@ -84,7 +83,6 @@ function AboutPage() {
               yourself.
             </p>
           </motion.div>
-
         </div>
       </section>
 
@@ -93,25 +91,28 @@ function AboutPage() {
       ===================================================== */}
       <section className="px-6 py-28 lg:px-10 lg:py-40">
         <div className="mx-auto max-w-7xl">
-
           <div className="grid gap-16 lg:grid-cols-[0.9fr_1fr] lg:items-center">
-
             {/* IMAGE */}
             <motion.div
               initial={{ opacity: 0, x: -40 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.8 }}
               className="relative"
             >
-              <div className="h-[550px] overflow-hidden sm:h-[650px]">
+              <div className="relative h-[550px] overflow-hidden sm:h-[650px]">
                 <img
-                  src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1200&q=85"
-                  alt="INBLACK beauty salon"
+                  src={aboutImage}
+                  alt="INBLACK beauty salon experience"
+                  loading="lazy"
+                  decoding="async"
                   className="h-full w-full object-cover grayscale-[10%] transition-transform duration-1000 hover:scale-105"
                 />
+
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A]/40 via-transparent to-transparent" />
               </div>
 
+              {/* Decorative border */}
               <div className="absolute -bottom-5 -right-5 h-full w-full border border-[#C9A45C]/50" />
             </motion.div>
 
@@ -119,7 +120,7 @@ function AboutPage() {
             <motion.div
               initial={{ opacity: 0, x: 40 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.8, delay: 0.1 }}
             >
               <div className="mb-7 flex items-center gap-3">
@@ -133,7 +134,9 @@ function AboutPage() {
               <h2 className="text-5xl font-light leading-[0.95] tracking-[-0.05em] sm:text-6xl">
                 BEAUTY SHOULD
                 <br />
-                <span className="italic">FEEL PERSONAL.</span>
+                <span className="font-serif italic text-[#8C6D32]">
+                  FEEL PERSONAL.
+                </span>
               </h2>
 
               <div className="mt-9 space-y-6 text-sm leading-7 text-[#0A0A0A]/55">
@@ -173,7 +176,6 @@ function AboutPage() {
                 />
               </Link>
             </motion.div>
-
           </div>
         </div>
       </section>
@@ -182,11 +184,8 @@ function AboutPage() {
           VALUES
       ===================================================== */}
       <section className="border-t border-[#0A0A0A]/10 px-6 py-28 lg:px-10 lg:py-36">
-
         <div className="mx-auto max-w-7xl">
-
           <div className="mb-16 max-w-2xl">
-
             <div className="mb-6 flex items-center gap-3">
               <span className="h-px w-10 bg-[#C9A45C]" />
 
@@ -198,12 +197,13 @@ function AboutPage() {
             <h2 className="text-5xl font-light leading-[0.95] tracking-[-0.05em] sm:text-6xl">
               THE VALUES
               <br />
-              <span className="italic">BEHIND INBLACK.</span>
+              <span className="font-serif italic text-[#8C6D32]">
+                BEHIND INBLACK.
+              </span>
             </h2>
           </div>
 
           <div className="grid gap-px bg-[#0A0A0A]/10 md:grid-cols-2">
-
             {values.map((value, index) => {
               const Icon = value.icon;
 
@@ -212,17 +212,19 @@ function AboutPage() {
                   key={value.title}
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
+                  viewport={{ once: true, amount: 0.2 }}
                   transition={{
                     duration: 0.6,
                     delay: index * 0.08,
                   }}
                   className="group relative bg-[#F5F2ED] p-8 lg:p-12"
                 >
+                  {/* Number */}
                   <span className="absolute right-8 top-8 text-xs tracking-[0.2em] text-[#0A0A0A]/20">
                     {value.number}
                   </span>
 
+                  {/* Icon */}
                   <div className="flex h-12 w-12 items-center justify-center rounded-full border border-[#C9A45C]/50 text-[#8C6D32] transition-all duration-300 group-hover:bg-[#0A0A0A] group-hover:text-[#C9A45C]">
                     <Icon size={18} />
                   </div>
@@ -237,9 +239,7 @@ function AboutPage() {
                 </motion.article>
               );
             })}
-
           </div>
-
         </div>
       </section>
 
@@ -247,9 +247,7 @@ function AboutPage() {
           FINAL STATEMENT
       ===================================================== */}
       <section className="bg-[#0A0A0A] px-6 py-28 text-center text-[#F5F2ED] lg:px-10 lg:py-40">
-
         <div className="mx-auto max-w-4xl">
-
           <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -268,7 +266,7 @@ function AboutPage() {
           >
             COME AS YOU ARE.
             <br />
-            <span className="italic text-[#C9A45C]">
+            <span className="font-serif italic text-[#C9A45C]">
               LEAVE FEELING NEW.
             </span>
           </motion.h2>
@@ -295,10 +293,8 @@ function AboutPage() {
               className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
             />
           </Link>
-
         </div>
       </section>
-
     </main>
   );
 }

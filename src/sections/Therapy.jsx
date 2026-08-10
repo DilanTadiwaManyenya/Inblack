@@ -6,6 +6,8 @@ import {
 } from "react-icons/fi";
 import { Link } from "react-router-dom";
 
+import therapyImage from "../assets/therapy.jpg";
+
 const treatments = [
   "Relaxation Massage",
   "Deep Tissue Massage",
@@ -16,16 +18,14 @@ const treatments = [
 
 function Therapy() {
   return (
-    <section
-      id="therapy"
-      className="relative overflow-hidden bg-[#0A0A0A] px-6 py-28 text-[#F5F2ED] lg:px-10 lg:py-40"
-    >
-      {/* Decorative text */}
-      <div className="pointer-events-none absolute -right-16 top-20 hidden text-[12rem] font-light leading-none tracking-[-0.08em] text-white/[0.025] lg:block">
+    <section className="relative overflow-hidden bg-[#0A0A0A] px-6 py-28 text-[#F5F2ED] lg:px-10 lg:py-36">
+
+      {/* Decorative background text */}
+      <div className="pointer-events-none absolute -right-10 top-20 select-none text-[12rem] font-light leading-none tracking-[-0.08em] text-white/[0.02] sm:text-[18rem]">
         REST
       </div>
 
-      <div className="mx-auto max-w-7xl">
+      <div className="relative z-10 mx-auto max-w-7xl">
 
         {/* TOP INTRO */}
         <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
@@ -33,7 +33,7 @@ function Therapy() {
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.7 }}
           >
             <div className="mb-6 flex items-center gap-3">
@@ -47,14 +47,16 @@ function Therapy() {
             <h2 className="text-5xl font-light leading-[0.95] tracking-[-0.05em] sm:text-6xl lg:text-7xl">
               TAKE TIME
               <br />
-              <span className="italic">FOR YOU.</span>
+              <span className="italic text-[#C9A45C]">
+                FOR YOU.
+              </span>
             </h2>
           </motion.div>
 
           <motion.p
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.7, delay: 0.1 }}
             className="max-w-xl text-sm leading-7 text-white/50 lg:ml-auto"
           >
@@ -66,42 +68,46 @@ function Therapy() {
         </div>
 
         {/* MAIN CONTENT */}
-        <div className="mt-20 grid gap-10 lg:grid-cols-[1fr_0.8fr] lg:items-center">
+        <div className="mt-20 grid gap-12 lg:grid-cols-[1fr_0.8fr] lg:items-center">
 
           {/* IMAGE */}
           <motion.div
             initial={{ opacity: 0, scale: 0.97 }}
             whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.8 }}
             className="relative"
           >
+
             <div className="relative h-[480px] overflow-hidden sm:h-[600px]">
 
               <img
-                src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1200&q=85"
+                src={therapyImage}
                 alt="INBLACK wellness therapy"
-                className="h-full w-full object-cover grayscale-[20%] transition-transform duration-1000 hover:scale-105"
+                loading="lazy"
+                decoding="async"
+                className="h-full w-full object-cover grayscale-[15%] transition-transform duration-1000 hover:scale-105"
               />
 
               <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A]/60 via-transparent to-transparent" />
 
             </div>
 
-            {/* Frame */}
+            {/* Gold frame */}
             <div className="absolute -bottom-5 -left-5 h-full w-full border border-[#C9A45C]/40" />
 
             {/* Floating icon */}
             <div className="absolute bottom-8 right-8 flex h-20 w-20 items-center justify-center rounded-full bg-[#F5F2ED] text-[#0A0A0A]">
               <FiHeart size={22} />
             </div>
+
           </motion.div>
 
           {/* TREATMENTS */}
           <motion.div
             initial={{ opacity: 0, x: 35 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.8, delay: 0.1 }}
           >
 
@@ -111,7 +117,9 @@ function Therapy() {
 
             <h3 className="mt-5 text-3xl font-light md:text-4xl">
               A moment to
-              <span className="italic"> breathe.</span>
+              <span className="italic text-[#C9A45C]">
+                {" "}breathe.
+              </span>
             </h3>
 
             <p className="mt-6 text-sm leading-7 text-white/50">
@@ -128,7 +136,7 @@ function Therapy() {
                   key={treatment}
                   className="flex items-center gap-4 border-b border-white/10 py-5"
                 >
-                  <span className="flex h-6 w-6 items-center justify-center rounded-full border border-[#C9A45C]/40 text-[#C9A45C]">
+                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-[#C9A45C]/40 text-[#C9A45C]">
                     <FiCheck size={12} />
                   </span>
 
@@ -162,8 +170,10 @@ function Therapy() {
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
           className="mt-28 border-t border-white/10 pt-10"
         >
+
           <div className="flex flex-col justify-between gap-5 md:flex-row md:items-center">
 
             <p className="text-xs uppercase tracking-[0.3em] text-white/30">
@@ -176,6 +186,7 @@ function Therapy() {
             </p>
 
           </div>
+
         </motion.div>
 
       </div>

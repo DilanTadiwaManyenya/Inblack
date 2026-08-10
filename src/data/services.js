@@ -1,112 +1,27 @@
-const services = [
-  {
-    id: 1,
-    category: "Hair",
-    name: "Hair Styling",
-    description:
-      "Professional styling designed to give your hair the perfect finish for any occasion.",
-    duration: 60,
-    price: "$25",
-  },
-  {
-    id: 2,
-    category: "Hair",
-    name: "Cuts & Trims",
-    description:
-      "Precision cuts and trims tailored to your preferred style and look.",
-    duration: 45,
-    price: "$20",
-  },
-  {
-    id: 3,
-    category: "Hair",
-    name: "Braiding",
-    description:
-      "Beautiful protective and creative braiding styles designed around your personality.",
-    duration: 120,
-    price: "$40",
-  },
-  {
-    id: 4,
-    category: "Nails",
-    name: "Manicure",
-    description:
-      "A relaxing manicure with professional nail care and a beautifully finished look.",
-    duration: 45,
-    price: "$20",
-  },
-  {
-    id: 5,
-    category: "Nails",
-    name: "Pedicure",
-    description:
-      "Complete foot and nail care designed to leave you feeling refreshed.",
-    duration: 60,
-    price: "$25",
-  },
-  {
-    id: 6,
-    category: "Nails",
-    name: "Gel Nails",
-    description:
-      "Long-lasting gel nail finishes with a clean, polished appearance.",
-    duration: 75,
-    price: "$30",
-  },
-  {
-    id: 7,
-    category: "Makeup",
-    name: "Everyday Makeup",
-    description:
-      "Natural and elegant makeup for your everyday look.",
-    duration: 45,
-    price: "$25",
-  },
-  {
-    id: 8,
-    category: "Makeup",
-    name: "Bridal Makeup",
-    description:
-      "A carefully designed bridal makeup experience for your special day.",
-    duration: 90,
-    price: "$60",
-  },
-  {
-    id: 9,
-    category: "Makeup",
-    name: "Event Makeup",
-    description:
-      "Professional makeup for celebrations, parties and special occasions.",
-    duration: 60,
-    price: "$40",
-  },
-  {
-    id: 10,
-    category: "Massage & Therapy",
-    name: "Relaxation Massage",
-    description:
-      "A calming massage experience designed to help you relax and recharge.",
-    duration: 60,
-    price: "$35",
-  },
-  {
-    id: 11,
-    category: "Massage & Therapy",
-    name: "Deep Tissue Massage",
-    description:
-      "A deeper massage treatment focused on tension and muscle relaxation.",
-    duration: 60,
-    price: "$45",
-  },
-  {
-    id: 12,
-    category: "Massage & Therapy",
-    name: "Wellness Session",
-    description:
-      "A personalised wellness experience designed around relaxation and self-care.",
-    duration: 60,
-    price: "$35",
-  },
-];
+import hairStylingImage from "../assets/hair.jpg";
+import cutsTrimsImage from "../assets/hero.jpg";
+import braidingImage from "../assets/herooo.jpg";
+import manicureImage from "../assets/nails.jpg";
+import pedicureImage from "../assets/Nail Art Showcase _ Professional Studio Mani Inspiration.jpg";
+import gelNailsImage from "../assets/𝕞𝕒𝕟𝕚𝕡𝕦𝕝𝕒𝕥𝕚𝕠𝕟, ℝ𝕖𝕥𝕠𝕦𝕔𝕙𝕚𝕟! ℙ 𝕙𝕠𝕥𝕠𝕤𝕙𝕠𝕠𝕥.jpg";
+import everydayMakeupImage from "../assets/makeup.jpg";
+import bridalMakeupImage from "../assets/download (13).jpg";
+import eventMakeupImage from "../assets/download (14).jpg";
+import relaxationMassageImage from "../assets/therapy.jpg";
+import deepTissueImage from "../assets/hfyg.jpg";
+import wellnessSessionImage from "../assets/about.jpg";
 
-export { services };
+export const services = [
+  { id: 1, slug: "hair-styling", category: "Hair", name: "Hair Styling", description: "A polished, confidence-building finish for any occasion.", duration: 60, price: "$25", image: hairStylingImage },
+  { id: 2, slug: "cuts-trims", category: "Hair", name: "Cuts & Trims", description: "Precision shaping tailored to your features and personal style.", duration: 45, price: "$20", image: cutsTrimsImage },
+  { id: 3, slug: "braiding", category: "Hair", name: "Braiding", description: "Protective and expressive styles created with care and detail.", duration: 120, price: "$40", image: braidingImage },
+  { id: 4, slug: "manicure", category: "Nails", name: "Manicure", description: "Essential nail care with an impeccably finished look.", duration: 45, price: "$20", image: manicureImage },
+  { id: 5, slug: "pedicure", category: "Nails", name: "Pedicure", description: "Restorative foot and nail care for a refreshed finish.", duration: 60, price: "$25", image: pedicureImage },
+  { id: 6, slug: "gel-nails", category: "Nails", name: "Gel Nails", description: "Long-lasting colour and a clean, luminous polish.", duration: 75, price: "$30", image: gelNailsImage },
+  { id: 7, slug: "everyday-makeup", category: "Makeup", name: "Everyday Makeup", description: "Natural, elevated makeup that still feels like you.", duration: 45, price: "$25", image: everydayMakeupImage },
+  { id: 8, slug: "bridal-makeup", category: "Makeup", name: "Bridal Makeup", description: "A considered, radiant look for your most meaningful day.", duration: 90, price: "$60", image: bridalMakeupImage },
+  { id: 9, slug: "event-makeup", category: "Makeup", name: "Event Makeup", description: "Refined glamour for celebrations, parties and photographs.", duration: 60, price: "$40", image: eventMakeupImage },
+  { id: 10, slug: "relaxation-massage", category: "Massage & Therapy", name: "Relaxation Massage", description: "A soothing reset designed to calm body and mind.", duration: 60, price: "$35", image: relaxationMassageImage },
+  { id: 11, slug: "deep-tissue", category: "Massage & Therapy", name: "Deep Tissue Massage", description: "Targeted pressure to ease persistent tension and restore ease.", duration: 60, price: "$45", image: deepTissueImage },
+  { id: 12, slug: "wellness-session", category: "Massage & Therapy", name: "Wellness Session", description: "A personalised pause for restoration and self-care.", duration: 60, price: "$35", image: wellnessSessionImage },
+];

@@ -1,20 +1,25 @@
+import { lazy, Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 
-import Home from "./pages/Home";
-import ServicesPage from "./pages/servicesPage";
-import BookingPage from "./pages/BookingPage";
-import Boutique from "./pages/Boutique";
-import Gallery from "./pages/Gallery";
-import AboutPage from "./pages/AboutPage";
-import ContactPage from "./pages/ContactPage";
-import ProductDetails from "./pages/ProductDetails";
+const Home = lazy(() => import("./pages/Home"));
+const ServicesPage = lazy(() => import("./pages/servicesPage"));
+const BookingPage = lazy(() => import("./pages/BookingPage"));
+const Boutique = lazy(() => import("./pages/Boutique"));
+const Gallery = lazy(() => import("./pages/Gallery"));
+const AboutPage = lazy(() => import("./pages/AboutPage"));
+const ContactPage = lazy(() => import("./pages/ContactPage"));
+const ProductDetails = lazy(() => import("./pages/ProductDetails"));
 
 function App() {
   return (
     <BrowserRouter>
+      <Suspense fallback={<main className="min-h-screen bg-[#0A0A0A]" aria-label="Loading page" />}>
       <Routes>
+
+        {/* Global Layout */}
         <Route element={<Layout />}>
+
           {/* Homepage */}
           <Route path="/" element={<Home />} />
 
@@ -28,8 +33,11 @@ function App() {
 
           {/* Boutique Product */}
           <Route path="/product/:id" element={<ProductDetails />} />
+
         </Route>
+
       </Routes>
+      </Suspense>
     </BrowserRouter>
   );
 }

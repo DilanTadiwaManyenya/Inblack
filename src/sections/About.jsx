@@ -7,6 +7,8 @@ import {
 } from "react-icons/fi";
 import { Link } from "react-router-dom";
 
+import aboutImage from "../assets/about.jpg";
+
 const values = [
   {
     icon: FiHeart,
@@ -30,36 +32,36 @@ const values = [
 
 function About() {
   return (
-    <section
-      id="about"
-      className="relative overflow-hidden bg-[#F5F2ED] py-28 text-[#0A0A0A] lg:py-40"
-    >
+    <section className="relative overflow-hidden bg-[#F5F2ED] py-28 text-[#0A0A0A] lg:py-36">
       {/* Decorative background text */}
-      <div className="pointer-events-none absolute -left-20 top-20 hidden text-[12rem] font-light leading-none tracking-[-0.08em] text-[#0A0A0A]/[0.025] lg:block">
-        BLACK
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -right-10 top-10 select-none text-[14rem] font-light leading-none tracking-[-0.08em] text-[#0A0A0A]/[0.025] sm:text-[20rem] lg:text-[28rem]"
+      >
+        INBLACK
       </div>
 
-      <div className="mx-auto max-w-7xl px-6 lg:px-10">
-
+      <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-10">
         {/* MAIN STORY */}
         <div className="grid gap-16 lg:grid-cols-[1fr_0.85fr] lg:items-center">
-
           {/* IMAGE */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.8 }}
             className="relative"
           >
             <div className="relative h-[550px] overflow-hidden sm:h-[650px]">
               <img
-                src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=1200&q=85"
+                src={aboutImage}
                 alt="INBLACK beauty experience"
-                className="h-full w-full object-cover grayscale-[15%] transition-transform duration-1000 hover:scale-105"
+                loading="lazy"
+                decoding="async"
+                className="h-full w-full object-cover grayscale-[10%] transition-transform duration-1000 hover:scale-105"
               />
 
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A]/40 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A]/40 via-transparent to-transparent" />
             </div>
 
             {/* Decorative border */}
@@ -79,9 +81,10 @@ function About() {
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.8, delay: 0.1 }}
           >
+            {/* Eyebrow */}
             <div className="mb-7 flex items-center gap-3">
               <span className="h-px w-10 bg-[#C9A45C]" />
 
@@ -90,12 +93,16 @@ function About() {
               </span>
             </div>
 
+            {/* Heading */}
             <h2 className="text-5xl font-light leading-[0.95] tracking-[-0.05em] sm:text-6xl lg:text-7xl">
               MORE THAN
               <br />
-              <span className="italic">A SALON.</span>
+              <span className="font-serif italic text-[#8C6D32]">
+                A SALON.
+              </span>
             </h2>
 
+            {/* Story */}
             <div className="mt-8 space-y-5 text-sm leading-7 text-[#0A0A0A]/55">
               <p>
                 INBLACK was created around one simple idea — beauty should
@@ -108,9 +115,8 @@ function About() {
               </p>
 
               <p>
-                Hair, nails, makeup, therapy and style come together under
-                one roof to create an experience that goes beyond the
-                appointment.
+                Hair, nails, makeup, therapy and style come together under one
+                roof to create an experience that goes beyond the appointment.
               </p>
             </div>
 
@@ -131,10 +137,9 @@ function About() {
 
         {/* VALUES */}
         <div className="mt-28 border-t border-[#0A0A0A]/10 pt-10 lg:mt-36">
-
           <div className="mb-12 flex items-center justify-between">
             <span className="text-xs uppercase tracking-[0.3em] text-[#0A0A0A]/40">
-              What we believe
+              What We Believe
             </span>
 
             <span className="hidden text-xs tracking-[0.2em] text-[#0A0A0A]/30 sm:block">
@@ -143,7 +148,6 @@ function About() {
           </div>
 
           <div className="grid gap-px bg-[#0A0A0A]/10 md:grid-cols-3">
-
             {values.map((value, index) => {
               const Icon = value.icon;
 
@@ -152,7 +156,7 @@ function About() {
                   key={value.title}
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
+                  viewport={{ once: true, amount: 0.2 }}
                   transition={{
                     duration: 0.6,
                     delay: index * 0.1,
@@ -173,10 +177,8 @@ function About() {
                 </motion.div>
               );
             })}
-
           </div>
         </div>
-
       </div>
     </section>
   );

@@ -9,8 +9,7 @@ import CTA from "../sections/CTA";
 
 function Home() {
   return (
-    <div className="bg-[#0A0A0A] text-[#F5F2ED]">
-
+    <div>
       {/* HERO */}
       <Hero />
 
@@ -34,7 +33,6 @@ function Home() {
 
       {/* FINAL CTA */}
       <CTA />
-
     </div>
   );
 }

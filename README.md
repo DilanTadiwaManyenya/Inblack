@@ -1,16 +1,20 @@
-# React + Vite
+# INBLACK Beauty & Wellness
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+INBLACK is a React/Vite website with a Supabase-backed appointment-request flow.
 
-Currently, two official plugins are available:
+## Local setup
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+1. Install dependencies with `npm install`.
+2. Copy `.env.example` to `.env` and replace both public Supabase values.
+3. Start the site with `npm run dev`.
 
-## React Compiler
+The client only receives `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY`. Never add a Supabase service-role key to a Vite environment file.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Booking backend
 
-## Expanding the ESLint configuration
+The backend is contained in `supabase/`:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- `migrations/20260810000000_create_booking_backend.sql` creates and seeds services and appointments.
+- `functions/create-booking/index.ts` validates public booking requests and writes them server-side.
+
+For Supabase setup and deployment commands, see `supabase/README.md`.

@@ -1,10 +1,10 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import {
   FiArrowUpRight,
   FiPhone,
   FiMail,
   FiMapPin,
-  FiInstagram,
   FiClock,
 } from "react-icons/fi";
 import { Link } from "react-router-dom";
@@ -46,11 +46,10 @@ const openingHours = [
 ];
 
 export default function ContactPage() {
+  const [formNotice, setFormNotice] = useState("");
   const handleSubmit = (event) => {
     event.preventDefault();
-
-    // Connect this form to EmailJS, Supabase,
-    // or your backend when you're ready.
+    setFormNotice("Messaging is not configured yet. Please call or email INBLACK directly and our team will be happy to help.");
   };
 
   return (
@@ -191,19 +190,7 @@ export default function ContactPage() {
                 Follow INBLACK
               </p>
 
-              <a
-                href="#"
-                className="group inline-flex items-center gap-3 text-sm text-white/60 transition-colors duration-300 hover:text-[#C9A45C]"
-              >
-                <FiInstagram />
-
-                Instagram
-
-                <FiArrowUpRight
-                  size={14}
-                  className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
-                />
-              </a>
+              <p className="text-sm leading-6 text-white/50">Social profiles will be added when official handles are available.</p>
             </div>
           </motion.div>
 
@@ -366,6 +353,8 @@ export default function ContactPage() {
                 className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
               />
             </button>
+
+            {formNotice && <p className="mt-5 border border-[#C9A45C]/30 bg-[#C9A45C]/10 px-4 py-3 text-sm leading-6 text-[#F5F2ED]" role="status">{formNotice}</p>}
 
             <p className="mt-5 text-center text-[10px] leading-5 tracking-wide text-white/25">
               We&apos;ll get back to you as soon as possible.

@@ -1,4 +1,4 @@
-import { FiArrowUpRight, FiInstagram, FiFacebook } from "react-icons/fi";
+import { FiArrowUpRight } from "react-icons/fi";
 import { Link } from "react-router-dom";
 
 const footerLinks = [
@@ -76,10 +76,10 @@ function Footer() {
 
             <div className="mt-7 space-y-4 text-sm text-white/50">
               <a
-                href="tel:+263000000000"
+                href="tel:+263770000000"
                 className="block transition-colors hover:text-[#F5F2ED]"
               >
-                +263 00 000 0000
+                +263 77 000 0000
               </a>
 
               <a
@@ -94,24 +94,7 @@ function Footer() {
               </p>
             </div>
 
-            {/* SOCIALS */}
-            <div className="mt-7 flex gap-3">
-              <a
-                href="#"
-                aria-label="Instagram"
-                className="flex h-10 w-10 items-center justify-center border border-white/10 transition-all duration-300 hover:border-[#C9A45C] hover:text-[#C9A45C]"
-              >
-                <FiInstagram size={16} />
-              </a>
-
-              <a
-                href="#"
-                aria-label="Facebook"
-                className="flex h-10 w-10 items-center justify-center border border-white/10 transition-all duration-300 hover:border-[#C9A45C] hover:text-[#C9A45C]"
-              >
-                <FiFacebook size={16} />
-              </a>
-            </div>
+            <Link to="/contact" className="mt-7 inline-flex text-xs uppercase tracking-[.16em] text-[#C9A45C] hover:text-[#F5F2ED]">Contact our team</Link>
           </div>
 
         </div>

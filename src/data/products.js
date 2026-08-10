@@ -1,7 +1,7 @@
-import hairProduct from "../assets/hair-product.jpg";
-import bodyProduct from "../assets/body-product.jpg";
-import beautyProduct from "../assets/beauty-product.jpg";
-import accessoryProduct from "../assets/accessory.jpg";
+import hairProduct from "../assets/hair-care-products.jpg";
+import bodyProduct from "../assets/body-care-products.jpg";
+import beautyProduct from "../assets/beauty-essentials.jpg";
+import accessoryProduct from "../assets/beauty-accessories.jpg";
 
 export const products = [
   {

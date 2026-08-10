@@ -1,15 +1,28 @@
-import hairStylingImage from "../assets/hair.jpg";
-import cutsTrimsImage from "../assets/hero.jpg";
-import braidingImage from "../assets/herooo.jpg";
-import manicureImage from "../assets/nails.jpg";
-import pedicureImage from "../assets/Nail Art Showcase _ Professional Studio Mani Inspiration.jpg";
+import hairStylingImage from "../assets/hair-styling.jpg";
+
+import cutsTrimsImage from "../assets/hair-cut.jpg";
+
+import braidingImage from "../assets/hair-braiding.jpg";
+
+import manicureImage from "../assets/mancure-close-up.jpg";
+
+import pedicureImage from "../assets/pedcure.jpg";
+
 import gelNailsImage from "../assets/𝕞𝕒𝕟𝕚𝕡𝕦𝕝𝕒𝕥𝕚𝕠𝕟, ℝ𝕖𝕥𝕠𝕦𝕔𝕙𝕚𝕟! ℙ 𝕙𝕠𝕥𝕠𝕤𝕙𝕠𝕠𝕥.jpg";
+
 import everydayMakeupImage from "../assets/makeup.jpg";
-import bridalMakeupImage from "../assets/download (13).jpg";
-import eventMakeupImage from "../assets/download (14).jpg";
-import relaxationMassageImage from "../assets/therapy.jpg";
-import deepTissueImage from "../assets/hfyg.jpg";
-import wellnessSessionImage from "../assets/about.jpg";
+
+import bridalMakeupImage from "../assets/bridal-make-up.jpg";
+
+import eventMakeupImage from "../assets/evening-makeup.jpg";
+
+import relaxationMassageImage from "../assets/luxury-massage2.jpg";
+
+import deepTissueImage from "../assets/deep-tissue.jpg";
+
+import wellnessSessionImage from "../assets/luxury-massage.jpg";
+
+
 
 export const services = [
   { id: 1, slug: "hair-styling", category: "Hair", name: "Hair Styling", description: "A polished, confidence-building finish for any occasion.", duration: 60, price: "$25", image: hairStylingImage },

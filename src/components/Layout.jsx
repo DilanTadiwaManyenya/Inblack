@@ -2,6 +2,11 @@ import { useEffect } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import { products } from "../data/products";
+
+const setMetaContent = (selector, content) => {
+  document.querySelector(selector)?.setAttribute("content", content);
+};
 
 function Layout() {
   const location = useLocation();
@@ -15,11 +20,25 @@ function Layout() {
       "/about": ["INBLACK | About", "Learn about the INBLACK beauty and wellness experience."],
       "/contact": ["INBLACK | Contact", "Contact INBLACK for appointments and service enquiries."],
     };
-    const [title, description] = location.pathname.startsWith("/product/")
-      ? ["INBLACK | Boutique", "Discover the INBLACK boutique collection."]
-      : metadata[location.pathname] || metadata["/"];
+    const productMatch = location.pathname.match(/^\/product\/([^/]+)$/);
+    const product = productMatch
+      ? products.find((item) => String(item.id) === productMatch[1])
+      : null;
+    const isKnownRoute = Boolean(metadata[location.pathname]);
+    const isMissingPage = !isKnownRoute && !product;
+    const [title, description] = product
+      ? [`${product.name} | INBLACK Boutique`, product.description]
+      : isMissingPage
+        ? ["Page Not Found | INBLACK", "The requested INBLACK page could not be found."]
+        : metadata[location.pathname];
+
     document.title = title;
-    document.querySelector('meta[name="description"]')?.setAttribute("content", description);
+    setMetaContent('meta[name="description"]', description);
+    setMetaContent('meta[name="robots"]', isMissingPage ? "noindex, follow" : "index, follow");
+    setMetaContent('meta[property="og:title"]', title);
+    setMetaContent('meta[property="og:description"]', description);
+    setMetaContent('meta[name="twitter:title"]', title);
+    setMetaContent('meta[name="twitter:description"]', description);
   }, [location.pathname]);
 
   return (

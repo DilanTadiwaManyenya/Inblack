@@ -349,6 +349,9 @@ export default function BookingPage() {
                     id="name"
                     name="name"
                     type="text"
+                    autoComplete="name"
+                    minLength="2"
+                    maxLength="120"
                     value={formData.name}
                     onChange={handleChange}
                     placeholder="Your full name"
@@ -369,6 +372,10 @@ export default function BookingPage() {
                     id="phone"
                     name="phone"
                     type="tel"
+                    autoComplete="tel"
+                    inputMode="tel"
+                    minLength="6"
+                    maxLength="30"
                     value={formData.phone}
                     onChange={handleChange}
                     placeholder="Your phone number"
@@ -392,6 +399,9 @@ export default function BookingPage() {
                   id="email"
                   name="email"
                   type="email"
+                  autoComplete="email"
+                  inputMode="email"
+                  maxLength="254"
                   value={formData.email}
                   onChange={handleChange}
                   placeholder="you@example.com"
@@ -486,6 +496,7 @@ export default function BookingPage() {
                   id="message"
                   name="message"
                   rows="5"
+                  maxLength="2000"
                   value={formData.message}
                   onChange={handleChange}
                   placeholder="Anything you'd like us to know?"

@@ -66,6 +66,8 @@ function Boutique() {
             <img
               src={boutiqueImage}
               alt="INBLACK boutique collection"
+              width="736"
+              height="1308"
               loading="lazy"
               decoding="async"
               className="absolute inset-0 h-full w-full object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-[1.04]"

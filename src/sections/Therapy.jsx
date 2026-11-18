@@ -84,6 +84,8 @@ function Therapy() {
               <img
                 src={therapyImage}
                 alt="INBLACK wellness therapy"
+                width="1000"
+                height="1500"
                 loading="lazy"
                 decoding="async"
                 className="h-full w-full object-cover grayscale-[15%] transition-transform duration-1000 hover:scale-105"

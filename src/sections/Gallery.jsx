@@ -12,24 +12,32 @@ const galleryImages = [
     src: hairImage,
     alt: "INBLACK hair styling",
     category: "Hair",
+    width: 736,
+    height: 946,
     className: "md:row-span-2",
   },
   {
     src: nailsImage,
     alt: "INBLACK nail beauty",
     category: "Nails",
+    width: 736,
+    height: 920,
     className: "",
   },
   {
     src: makeupImage,
     alt: "INBLACK makeup",
     category: "Makeup",
+    width: 736,
+    height: 1104,
     className: "",
   },
   {
     src: therapyImage,
     alt: "INBLACK wellness experience",
     category: "Wellness",
+    width: 1000,
+    height: 1500,
     className: "md:col-span-2",
   },
 ];
@@ -121,6 +129,8 @@ function Gallery() {
               <img
                 src={image.src}
                 alt={image.alt}
+                width={image.width}
+                height={image.height}
                 loading={index === 0 ? "eager" : "lazy"}
                 decoding="async"
                 className="h-full w-full object-cover grayscale-[10%] transition-transform duration-[1200ms] ease-out group-hover:scale-105"

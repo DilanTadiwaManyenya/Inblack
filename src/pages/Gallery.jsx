@@ -12,31 +12,43 @@ const galleryItems = [
     title: "Hair",
     category: "Beauty",
     image: hairImage,
+    width: 736,
+    height: 946,
   },
   {
     title: "Nails",
     category: "Beauty",
     image: nailsImage,
+    width: 736,
+    height: 920,
   },
   {
     title: "Makeup",
     category: "Beauty",
     image: makeupImage,
+    width: 736,
+    height: 1104,
   },
   {
     title: "Wellness",
     category: "Therapy",
     image: therapyImage,
+    width: 1000,
+    height: 1500,
   },
   {
     title: "Beauty Rituals",
     category: "Lifestyle",
     image: makeupImage,
+    width: 736,
+    height: 1104,
   },
   {
     title: "The INBLACK Experience",
     category: "Studio",
     image: hairImage,
+    width: 736,
+    height: 946,
   },
 ];
 
@@ -156,6 +168,8 @@ function Gallery() {
                   <img
                     src={item.image}
                     alt={`INBLACK ${item.title}`}
+                    width={item.width}
+                    height={item.height}
                     loading={index < 2 ? "eager" : "lazy"}
                     decoding="async"
                     className="h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-105"

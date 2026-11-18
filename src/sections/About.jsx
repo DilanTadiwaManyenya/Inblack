@@ -56,6 +56,8 @@ function About() {
               <img
                 src={aboutImage}
                 alt="INBLACK beauty experience"
+                width="736"
+                height="920"
                 loading="lazy"
                 decoding="async"
                 className="h-full w-full object-cover grayscale-[10%] transition-transform duration-1000 hover:scale-105"

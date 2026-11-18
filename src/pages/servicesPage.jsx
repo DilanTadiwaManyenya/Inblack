@@ -42,7 +42,7 @@ function ServicesPage() {
             <span className="hidden text-xs text-[#0A0A0A]/45 md:block">A signature moment, considered in full.</span>
           </div>
           <article className="grid bg-[#0A0A0A] text-[#F5F2ED] lg:grid-cols-[1.25fr_.75fr]">
-            <div className="aspect-[5/4] overflow-hidden lg:aspect-auto"><img src={featuredService.image} alt={`${featuredService.name} at INBLACK Beauty & Wellness`} width="1200" height="960" loading="eager" fetchPriority="high" decoding="async" className="h-full w-full object-cover" /></div>
+            <div className="aspect-[5/4] overflow-hidden lg:aspect-auto"><img src={featuredService.image} alt={`${featuredService.name} at INBLACK Beauty & Wellness`} width={featuredService.imageWidth} height={featuredService.imageHeight} loading="eager" fetchPriority="high" decoding="async" className="h-full w-full object-cover" /></div>
             <div className="flex flex-col justify-between p-7 sm:p-10 lg:p-12"><div><p className="text-[10px] uppercase tracking-[0.27em] text-[#C9A45C]">{featuredService.category}</p><h3 className="mt-5 text-5xl leading-[.85] tracking-[-0.05em] sm:text-6xl">{featuredService.name}</h3><p className="mt-7 max-w-sm text-sm leading-7 text-white/60">{featuredService.description}</p><div className="mt-9 flex gap-10 border-y border-white/15 py-5"><span><b className="block font-sans text-xl font-medium text-[#C9A45C]">{featuredService.duration}</b><span className="text-[9px] uppercase tracking-[.18em] text-white/45">Minutes</span></span><span><b className="block font-sans text-xl font-medium text-[#C9A45C]">{featuredService.price}</b><span className="text-[9px] uppercase tracking-[.18em] text-white/45">From</span></span></div></div><Link to={`/booking?service=${featuredService.slug}`} className="group mt-12 inline-flex w-fit items-center gap-3 border-b border-[#C9A45C] pb-2 text-[10px] uppercase tracking-[.18em] text-[#C9A45C] transition-colors hover:text-[#F5F2ED]">Book {featuredService.name}<FiArrowRight aria-hidden="true" className="transition-transform group-hover:translate-x-1" /></Link></div>
           </article>
         </div>
@@ -73,7 +73,7 @@ function ServicesPage() {
       {therapyService && <section className="bg-[#0A0A0A] px-6 py-20 text-[#F5F2ED] sm:px-8 lg:px-12 lg:py-28">
         <div className="mx-auto grid max-w-[1440px] items-center gap-10 lg:grid-cols-2 lg:gap-20">
           <div className="aspect-[5/4] overflow-hidden">
-            <img src={therapyService.image} alt="Relaxing massage therapy at INBLACK" width="1000" height="800" loading="lazy" decoding="async" className="h-full w-full object-cover" />
+            <img src={therapyService.image} alt="Relaxing massage therapy at INBLACK" width={therapyService.imageWidth} height={therapyService.imageHeight} loading="lazy" decoding="async" className="h-full w-full object-cover" />
           </div>
           <motion.div {...rise}>
             <p className="text-[10px] uppercase tracking-[0.3em] text-[#C9A45C]">Therapy at INBLACK</p>

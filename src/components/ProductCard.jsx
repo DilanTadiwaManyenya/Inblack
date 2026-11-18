@@ -8,6 +8,8 @@ function ProductCard({
   category,
   price,
   image,
+  imageWidth,
+  imageHeight,
   inStock = true,
   description,
   index = 0,
@@ -27,6 +29,8 @@ function ProductCard({
             <img
               src={image}
               alt={name}
+              width={imageWidth}
+              height={imageHeight}
               decoding="async"
               className="h-full w-full object-cover grayscale-[15%] transition-transform duration-700 group-hover:scale-105 group-hover:grayscale-0"
               loading="lazy"

@@ -22,8 +22,8 @@ function ServiceCard({ service, index = 0, priority = false }) {
           <img
             src={service.image}
             alt={`${service.name} at INBLACK Beauty & Wellness`}
-            width="800"
-            height="1000"
+            width={service.imageWidth}
+            height={service.imageHeight}
             loading={priority ? "eager" : "lazy"}
             fetchPriority={priority ? "high" : "auto"}
             decoding="async"

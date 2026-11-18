@@ -108,6 +108,8 @@ export default function BoutiquePage() {
                   category={product.category}
                   price={product.price}
                   image={product.image}
+                  imageWidth={product.imageWidth}
+                  imageHeight={product.imageHeight}
                   inStock={product.inStock}
                   description={product.description}
                   index={index}

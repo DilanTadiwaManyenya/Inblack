@@ -90,8 +90,11 @@ export default function ProductDetails() {
                 <img
                   src={product.image}
                   alt={product.name}
+                  width="1000"
+                  height="1250"
                   className="h-full w-full object-cover transition-transform duration-1000 hover:scale-105"
                   loading="eager"
+                  decoding="async"
                 />
 
                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0A0A0A]/20 via-transparent to-transparent" />

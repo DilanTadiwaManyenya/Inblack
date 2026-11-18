@@ -3,7 +3,7 @@ import cutsTrimsImage from "../assets/hair-cut.jpg";
 import braidingImage from "../assets/hair-braiding.jpg";
 import manicureImage from "../assets/manicure.jpg";
 import pedicureImage from "../assets/pedicure.jpg";
-import gelNailsImage from "../assets/mancure-close-up.jpg";
+import gelNailsImage from "../assets/gel-nails.jpg";
 import everydayMakeupImage from "../assets/natural-makeup.jpg";
 import bridalMakeupImage from "../assets/bridal-makeup.jpg";
 import eventMakeupImage from "../assets/evening-makeup.jpg";

@@ -24,6 +24,7 @@ function GalleryCard({
         <img
           src={src}
           alt={alt || title || "INBLACK Gallery image"}
+          decoding="async"
           className="h-full w-full object-cover grayscale-[15%] transition-transform duration-1000 group-hover:scale-105 group-hover:grayscale-0"
           loading="lazy"
         />

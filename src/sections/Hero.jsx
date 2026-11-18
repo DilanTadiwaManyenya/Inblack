@@ -111,6 +111,9 @@ function Hero() {
               <img
                 src={heroImage}
                 alt="INBLACK beauty experience"
+                width="1200"
+                height="1500"
+                loading="eager"
                 fetchPriority="high"
                 decoding="async"
                 className="h-full w-full object-cover object-center transition-transform duration-[1.5s] hover:scale-[1.025]"

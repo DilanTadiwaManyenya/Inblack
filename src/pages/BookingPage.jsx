@@ -5,19 +5,12 @@ import { FiCheck, FiClock } from "react-icons/fi";
 import { useSearchParams } from "react-router-dom";
 import { services } from "../data/services";
 import { isSupabaseConfigured, supabase } from "../lib/supabase";
-
-const getLocalDate = () => {
-  const date = new Date();
-  const offset = date.getTimezoneOffset() * 60_000;
-  return new Date(date.getTime() - offset).toISOString().slice(0, 10);
-};
+import { getInitialService, getLocalDate } from "../lib/booking";
 
 export default function BookingPage() {
   const [searchParams] = useSearchParams();
   const requestedService = searchParams.get("service") || "";
-  const initialService = services.some((service) => service.slug === requestedService)
-    ? requestedService
-    : "";
+  const initialService = getInitialService(requestedService, services);
   const [submitted, setSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);

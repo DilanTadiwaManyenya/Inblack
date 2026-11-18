@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
@@ -10,6 +10,16 @@ const setMetaContent = (selector, content) => {
 
 function Layout() {
   const location = useLocation();
+  const previousPath = useRef(location.pathname);
+
+  useEffect(() => {
+    if (previousPath.current !== location.pathname) {
+      window.scrollTo(0, 0);
+      document.getElementById("main-content")?.focus({ preventScroll: true });
+      previousPath.current = location.pathname;
+    }
+  }, [location.pathname]);
+
   useEffect(() => {
     const metadata = {
       "/": ["INBLACK | Beauty & Wellness", "Beauty, wellness and style brought together in one considered INBLACK experience."],
@@ -43,10 +53,16 @@ function Layout() {
 
   return (
     <div className="flex min-h-screen flex-col bg-[#0A0A0A] text-[#F5F2ED]">
+      <a
+        href="#main-content"
+        className="fixed left-4 top-4 z-[100] -translate-y-24 bg-[#C9A45C] px-5 py-3 text-xs font-medium tracking-[0.16em] text-[#0A0A0A] transition-transform focus:translate-y-0 motion-reduce:transition-none"
+      >
+        SKIP TO CONTENT
+      </a>
       <Navbar />
-      <main className="flex-1">
+      <div id="main-content" tabIndex="-1" className="flex-1 outline-none">
         <Outlet />
-      </main>
+      </div>
       <Footer />
     </div>
   );

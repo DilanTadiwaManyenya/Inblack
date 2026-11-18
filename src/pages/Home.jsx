@@ -9,7 +9,7 @@ import CTA from "../sections/CTA";
 
 function Home() {
   return (
-    <div>
+    <main>
       {/* HERO */}
       <Hero />
 
@@ -33,7 +33,7 @@ function Home() {
 
       {/* FINAL CTA */}
       <CTA />
-    </div>
+    </main>
   );
 }
 

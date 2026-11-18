@@ -10,6 +10,7 @@ const Gallery = lazy(() => import("./pages/Gallery"));
 const AboutPage = lazy(() => import("./pages/AboutPage"));
 const ContactPage = lazy(() => import("./pages/ContactPage"));
 const ProductDetails = lazy(() => import("./pages/ProductDetails"));
+const NotFoundPage = lazy(() => import("./pages/NotFoundPage"));
 
 function App() {
   return (
@@ -33,6 +34,9 @@ function App() {
 
           {/* Boutique Product */}
           <Route path="/product/:id" element={<ProductDetails />} />
+
+          {/* Fallback */}
+          <Route path="*" element={<NotFoundPage />} />
 
         </Route>
 

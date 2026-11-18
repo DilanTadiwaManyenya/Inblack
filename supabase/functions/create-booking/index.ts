@@ -14,6 +14,23 @@ const json = (body: Record<string, unknown>, status = 200) =>
 const text = (value: unknown, maxLength: number) =>
   typeof value === "string" ? value.trim().slice(0, maxLength) : "";
 
+const calendarDateInHarare = () => {
+  const parts = new Intl.DateTimeFormat("en", {
+    timeZone: "Africa/Harare",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).formatToParts(new Date());
+  const value = Object.fromEntries(parts.map(({ type, value }) => [type, value]));
+  return `${value.year}-${value.month}-${value.day}`;
+};
+
+const isValidDate = (value: string) => {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) return false;
+  const date = new Date(`${value}T00:00:00Z`);
+  return !Number.isNaN(date.getTime()) && date.toISOString().slice(0, 10) === value;
+};
+
 Deno.serve(async (request) => {
   if (request.method === "OPTIONS") return new Response("ok", { headers: corsHeaders });
   if (request.method !== "POST") return json({ error: "Method not allowed." }, 405);
@@ -36,10 +53,10 @@ Deno.serve(async (request) => {
     if (!serviceSlug || customerName.length < 2 || phone.length < 6 || !/^\S+@\S+\.\S+$/.test(email)) {
       return json({ error: "Please complete all required fields with valid details." }, 422);
     }
-    if (!/^\d{4}-\d{2}-\d{2}$/.test(preferredDate) || !/^\d{2}:\d{2}$/.test(preferredTime)) {
+    if (!isValidDate(preferredDate) || !/^(?:[01]\d|2[0-3]):[0-5]\d$/.test(preferredTime)) {
       return json({ error: "Please select a valid date and time." }, 422);
     }
-    if (preferredDate < new Date().toISOString().slice(0, 10)) {
+    if (preferredDate < calendarDateInHarare()) {
       return json({ error: "Appointments cannot be requested for a past date." }, 422);
     }
 

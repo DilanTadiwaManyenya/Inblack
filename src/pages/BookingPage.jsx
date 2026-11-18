@@ -6,8 +6,18 @@ import { useSearchParams } from "react-router-dom";
 import { services } from "../data/services";
 import { isSupabaseConfigured, supabase } from "../lib/supabase";
 
+const getLocalDate = () => {
+  const date = new Date();
+  const offset = date.getTimezoneOffset() * 60_000;
+  return new Date(date.getTime() - offset).toISOString().slice(0, 10);
+};
+
 export default function BookingPage() {
   const [searchParams] = useSearchParams();
+  const requestedService = searchParams.get("service") || "";
+  const initialService = services.some((service) => service.slug === requestedService)
+    ? requestedService
+    : "";
   const [submitted, setSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -16,7 +26,7 @@ export default function BookingPage() {
     name: "",
     phone: "",
     email: "",
-    service: searchParams.get("service") || "",
+    service: initialService,
     date: "",
     time: "",
     message: "",
@@ -42,26 +52,33 @@ export default function BookingPage() {
     }
 
     setIsSubmitting(true);
-    const { data, error } = await supabase.functions.invoke("create-booking", {
-      body: {
-        serviceSlug: formData.service,
-        name: formData.name,
-        phone: formData.phone,
-        email: formData.email,
-        date: formData.date,
-        time: formData.time,
-        message: formData.message,
-        website: formData.website,
-      },
-    });
+    try {
+      const { data, error } = await supabase.functions.invoke("create-booking", {
+        body: {
+          serviceSlug: formData.service,
+          name: formData.name,
+          phone: formData.phone,
+          email: formData.email,
+          date: formData.date,
+          time: formData.time,
+          message: formData.message,
+          website: formData.website,
+        },
+      });
 
-    setIsSubmitting(false);
-    if (error || data?.error) {
-      setSubmitError(data?.error || "We could not submit your request. Please try again.");
+      if (error || data?.error) {
+        setSubmitError(data?.error || "We could not submit your request. Please try again.");
+        return;
+      }
+
+      setSubmitted(true);
+    } catch (error) {
+      console.error("Booking request failed", error);
+      setSubmitError("We could not connect to the booking service. Please try again.");
       return;
+    } finally {
+      setIsSubmitting(false);
     }
-
-    setSubmitted(true);
 
     window.scrollTo({
       top: 0,
@@ -72,7 +89,7 @@ export default function BookingPage() {
   const selectedService = services.find((service) => service.slug === formData.service);
 
   // Prevent users from selecting dates in the past.
-  const today = new Date().toISOString().split("T")[0];
+  const today = getLocalDate();
 
   return (
     <main className="min-h-screen bg-[#0A0A0A] text-[#F5F2ED]">
@@ -491,7 +508,7 @@ export default function BookingPage() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="group mt-10 flex w-full items-center justify-center gap-3 bg-[#C9A45C] px-7 py-5 text-xs font-medium tracking-[0.2em] text-[#0A0A0A] transition-all duration-300 hover:bg-[#F5F2ED]"
+              className="group mt-10 flex w-full items-center justify-center gap-3 bg-[#C9A45C] px-7 py-5 text-xs font-medium tracking-[0.2em] text-[#0A0A0A] transition-all duration-300 hover:bg-[#F5F2ED] disabled:cursor-wait disabled:opacity-60"
               >
                 {isSubmitting ? "SENDING REQUEST…" : "REQUEST APPOINTMENT"}
 

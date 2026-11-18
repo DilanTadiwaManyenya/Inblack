@@ -7,7 +7,9 @@ import {
   FiMapPin,
   FiClock,
 } from "react-icons/fi";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
+
+const contactSubjects = ["appointment", "services", "boutique", "general"];
 
 const contactDetails = [
   {
@@ -46,6 +48,15 @@ const openingHours = [
 ];
 
 export default function ContactPage() {
+  const [searchParams] = useSearchParams();
+  const requestedSubject = searchParams.get("subject") || "";
+  const initialSubject = contactSubjects.includes(requestedSubject)
+    ? requestedSubject
+    : "";
+  const productName = (searchParams.get("product") || "").trim().slice(0, 100);
+  const initialMessage = productName
+    ? `I'm interested in ${productName}. Please share availability and purchasing details.`
+    : "";
   const [formNotice, setFormNotice] = useState("");
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -302,7 +313,7 @@ export default function ContactPage() {
               <select
                 id="subject"
                 name="subject"
-                defaultValue=""
+                defaultValue={initialSubject}
                 required
                 className="w-full border-b border-white/15 bg-[#0A0A0A] px-0 py-4 text-sm text-white outline-none transition-colors focus:border-[#C9A45C]"
               >
@@ -342,6 +353,7 @@ export default function ContactPage() {
                 name="message"
                 rows={5}
                 maxLength="2000"
+                defaultValue={initialMessage}
                 required
                 placeholder="How can we help?"
                 className="w-full resize-none border-b border-white/15 bg-transparent px-0 py-4 text-sm text-white outline-none transition-colors placeholder:text-white/20 focus:border-[#C9A45C]"

@@ -188,7 +188,7 @@ export default function ProductDetails() {
               <div className="mt-10">
                 {product.inStock !== false ? (
                   <Link
-                    to="/contact"
+                    to={`/contact?subject=boutique&product=${encodeURIComponent(product.name)}`}
                     className="group flex w-full items-center justify-center gap-3 bg-[#0A0A0A] px-7 py-5 text-xs font-medium tracking-[0.2em] text-[#F5F2ED] transition-all duration-300 hover:bg-[#C9A45C] hover:text-[#0A0A0A]"
                   >
                     <FiShoppingBag size={17} />

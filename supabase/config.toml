@@ -2,3 +2,6 @@ project_id = "inblack"
 
 [functions.create-booking]
 verify_jwt = false
+
+[functions.create-contact]
+verify_jwt = false
